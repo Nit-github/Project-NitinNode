@@ -26,3 +26,4 @@ function executequery(query){
     })
 }
 module.exports={executequery}
+console.log("hello viks");
