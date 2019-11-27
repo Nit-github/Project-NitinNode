@@ -1,0 +1,69 @@
+<head>
+    <title>Login Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    function ValidateLogin(){
+        if($("#UID").val().trim().length>0)
+        {
+            if($("#PWD").val().trim().length>0)
+            {
+$("#loader").show();
+                $.ajax({
+                    url: 'http://localhost:4000/login',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
+                success: function (data) { 
+                    $("#loader").hide();                    
+                    $("#spn").html(JSON.stringify(data)); 
+                }
+                });
+            }
+            else
+            {
+                alert("Enter Password!");
+                return false;
+            }            
+        }
+        else
+        {
+            alert("Enter User Id!");
+            return false;
+        }
+    }
+    </script>
+    <body>
+        <table align="center" style="width: 100%;">
+            <tr>
+                <td>
+                    User Name
+                </td>
+                <td>
+                    <input type="text" id="UID">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    User Pwd
+                </td>
+                <td>
+                    <input type="password" id="PWD">
+                </td>
+            </tr>
+            <tr>                
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit" onclick="ValidateLogin()">
+                    <img src="https://thumbs.gfycat.com/MarriedMarvelousHawaiianmonkseal-small.gif" width="50px" height="50px" id="loader" style="display:none;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Result : 
+                </td>
+                <td>
+                    <span id="spn"></span>
+                </td>
+            </tr>
+        </table>
+    </body>
+</head>
