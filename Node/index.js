@@ -24,5 +24,5 @@ app.post('/login',async function(req,res){
 
 const port = process.env.PORT || 4000;
 app.listen(port,function(){
-  console.log("Started on PORT "+port);
+  console.log("Started on the PORT "+port);
 })

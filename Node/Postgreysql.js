@@ -9,10 +9,6 @@ const pool = new Pool({
     ssl:true
   })
   
-function Temp(){
-	return "hello";
-}
-
 function executequery(query){
     return new Promise(async function(resolve,reject)
     {    
