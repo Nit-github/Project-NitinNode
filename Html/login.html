@@ -9,7 +9,8 @@
             {
 $("#loader").show();
                 $.ajax({
-                    url: 'http://localhost:4000/login',
+                    //url: 'http://localhost:4000/login',
+                    url:'https://nit-node.herokuapp.com/login',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
