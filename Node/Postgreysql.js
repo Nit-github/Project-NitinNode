@@ -25,4 +25,5 @@ function executequery(query){
               }
     })
 }
+console.log('hello');
 module.exports={executequery}
