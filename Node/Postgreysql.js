@@ -20,20 +20,9 @@ function executequery(query){
              catch(err) {
                  console.log(err);
                 return reject(err);              
-            } finally {
-                // Make sure to release the client before any error handling,
-                // just in case the error handling itself throws an error.
+            } finally {              
                 client.release()
               }
-
-//or
-
-//             client.connect()
-//   client.query(query, (err, res) => {
-//     console.log(err, res)    
-//     client.end()
-//     resolve(res);
-//   })
     })
 }
 module.exports={executequery}
