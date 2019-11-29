@@ -1,0 +1,42 @@
+<head>
+    <title>User Detail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    function load(){
+        $.ajax({
+                    url: 'http://localhost:4000/login/',
+                    //url:'https://nit-node.herokuapp.com/login',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
+                success: function (data) { 
+                    debugger;
+                    $("#loader").hide();  
+                    if(data!="No User Found!")                  
+                        window.location.href=data;
+                    else
+                        $("#spn").html(data);
+                }
+                });
+    }
+    //load();
+    </script>
+    <body>  
+        <table align="center" style="width: 100%;">
+            <tr>
+                <td>
+<table align="center" style="width: 100%;">
+    <tr>
+        <td align="right">
+            Welcome <%=data.name%>
+        </td>
+        <td>
+            <a href="/logout">logout</a>
+        </td>
+    </tr>
+</table>
+                </td>
+            </tr>
+        </table>               
+    </body>
+</head>
