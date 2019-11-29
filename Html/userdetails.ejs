@@ -1,42 +1,49 @@
 <head>
-    <title>User Detail</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    function load(){
-        $.ajax({
-                    url: 'http://localhost:4000/login/',
-                    //url:'https://nit-node.herokuapp.com/login',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
-                success: function (data) { 
-                    debugger;
-                    $("#loader").hide();  
-                    if(data!="No User Found!")                  
-                        window.location.href=data;
-                    else
-                        $("#spn").html(data);
-                }
-                });
-    }
-    //load();
-    </script>
+    <title>User Detail</title>    
     <body>  
-        <table align="center" style="width: 100%;">
+        <table align="center" style="width: 100%">
             <tr>
-                <td>
-<table align="center" style="width: 100%;">
-    <tr>
-        <td align="right">
-            Welcome <%=data.name%>
-        </td>
-        <td>
-            <a href="/logout">logout</a>
-        </td>
-    </tr>
-</table>
+                <td style="width: 80%;"></td>
+                <td align="right" style="width: 20%;">
+                        Welcome <%=data[0].uname%></td>
+            </tr>
+            <tr>
+                <td style="width: 80%;"></td>
+                <td align="right" style="width: 20%;">
+                    <a href="/logout">logout</a></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"></td>
+            </tr>            
+            <tr>
+                <td colspan="2" align="center"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <table align="center" style="width: 90%;">                                   
+                        <tr>
+                            <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Name : -</h3></td>
+                            <td align="left" style="width: 45%; vertical-align: baseline;"><%=data[0].uname%></td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Mobile No : -</h3></td>
+                            <td align="left" style="width: 45%; vertical-align: baseline;"><%=data[0].mobileno%></td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Emailid : -</h3></td>
+                            <td align="left" style="width: 45%; vertical-align: baseline;"><%=data[0].emailid%></td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Address : -</h3></td>
+                            <td align="left" style="width: 45%; vertical-align: baseline;"><%=data[0].address%></td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Reg Date : -</h3></td>
+                            <td align="left" style="width: 45%; vertical-align: baseline;"><%=data[0].ondate%></td>
+                        </tr>
+                    </table> 
                 </td>
             </tr>
-        </table>               
+        </table>                             
     </body>
 </head>

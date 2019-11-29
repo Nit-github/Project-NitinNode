@@ -20,7 +20,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {expires: 3600000}
 }))
-app.use('/login',login);
+    app.use('/login',login);
 app.use('/user',uprofile);
 app.use('/logout',logout);
 

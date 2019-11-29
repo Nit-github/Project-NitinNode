@@ -6,12 +6,10 @@ router.get('/',function(req,res){
   res.sendfile("Html/login.html");
   })
 
-router.post('/user',async function(req,res){
-    console.log(req)
+router.post('/user',async function(req,res){    
     //var query=`select * from usermst where Isactive=1 and right(Mobileno,10)='${req.body.UID}'`;
     var query=`select * from usermst where Isactive=1 and right(Mobileno,10)=$1 and upwd=$2`;
-    const params = [];
-    console.log('HERE');
+    const params = [];  
     try{
       params.push(`${req.body.UID}`);
       params.push(`${req.body.PWD}`);
