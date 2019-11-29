@@ -1,22 +1,28 @@
 <head>
     <title>Login Form</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./globalvar.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
     <script type="text/javascript">
-    function ValidateLogin(){
+    function ValidateLogin(){    
+        debugger;   
         if($("#UID").val().trim().length>0)
         {
             if($("#PWD").val().trim().length>0)
             {
-$("#loader").show();
+            $("#loader").show();
                 $.ajax({
-                    //url: 'http://localhost:4000/login',
-                    url:'https://nit-node.herokuapp.com/login',
+                    url: `${ajxurl}/login/user/`,
+                    //url:'https://nit-node.herokuapp.com/login',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
                 success: function (data) { 
-                    $("#loader").hide();                    
-                    $("#spn").html(JSON.stringify(data)); 
+                    debugger;
+                    $("#loader").hide();  
+                    if(data!="No User Found!")                  
+                        window.location.href=data;
+                    else
+                        $("#spn").html(data);
                 }
                 });
             }

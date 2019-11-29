@@ -9,12 +9,13 @@ const pool = new Pool({
     ssl:true
   })
   
-function executequery(query){
+function executequery(query,params){
+  //console.log(query,params);
     return new Promise(async function(resolve,reject)
     {    
             const client = await pool.connect()
             try {
-              const res = await client.query(query)            
+              const res = await client.query(query,params)            
               return resolve(res);
             }
              catch(err) {
