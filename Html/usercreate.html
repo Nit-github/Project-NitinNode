@@ -3,32 +3,45 @@
     <script type="text/javascript" src="./globalvar.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <script type="text/javascript">
-        function Update(){             
+    function Clear(){
+        $("#uname").val("");
+        $("#mob").val("");
+        $("#email").val("");
+        $("#address").val("");
+    }
+        function Create(){             
             if($("#uname").val().trim().length>0)
             {
                 if($("#mob").val().trim().length==10)
                 {
                     if($("#email").val().trim().length>0)
                     {
-                        if(ajxurl.test($("#email").val().trim()))
+                        if(emailtepmlate.test($("#email").val().trim()))
                         {
                         if($("#address").val().trim().length>0)
                         {
                             $("#loader").show();
                             $.ajax({
-                                url: `${ajxurl}/edit/useredit/`,                        
+                                url: `${ajxurl}/signup/create/`,                        
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: JSON.stringify({ UName: $("#uname").val(),Mob:$("#mob").val(),Email:$("#email").val(),Address:$("#address").val()}),
                                 success: function (data) {                                     
                                     $("#loader").hide();                                                       
-                                    window.location.href=data;                                    
+                                    if(data=="OK")
+                                    {
+                                        Clear();
+                                        alert("Your are successfully registered. Now you can login.");
+                                        
+                                    }else{
+                                        alert("Something went wrong! Please try after some time.");
+                                    }
                                 },
                                 error:function(err){
                                 console.log(err);
                                 alert(err);
                                 }
-                            }); 
+                            });                             
                         }else{
                             alert("Enter Address!");
                             return false;}
@@ -49,17 +62,17 @@
     <body>  
             <table align="center" style="width: 100%">
                 <tr>
-                    <td style="width: 80%;"></td>
-                    <td align="right" style="width: 20%;">
-                            Welcome <%=data[0].uname%></td>
+                    <td colspan="2" align="left">
+                      <a href="/">Home</a>
+                    </td>
                 </tr>
                 <tr>
-                    <td style="width: 80%;"></td>
-                    <td align="right" style="width: 20%;">
-                        <a href="/logout">logout</a></td>
+                    <td colspan="2"></td>                    
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"></td>
+                    <td colspan="2" align="center">
+                      <h1>New User Registration</h1>
+                    </td>
                 </tr>            
                 <tr>
                     <td colspan="2"></td>                    
@@ -70,29 +83,29 @@
                             <tr>
                                 <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Name : -</h3></td>
                                 <td align="left" style="width: 45%; vertical-align: baseline;">
-                                    <input type="text" id="uname" value="<%=data[0].uname%>"></td>
+                                    <input type="text" id="uname"></td>
                             </tr>
                             <tr>
                                 <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Mobile No : -</h3></td>
                                 <td align="left" style="width: 45%; vertical-align: baseline;">
-                                    <input type="text" id="mob" maxlength="10" value="<%=data[0].mobileno%>" onkeydown="return isNumberKey(event)" onkeyup="AvoidZero(this.id);"></td>
+                                    <input type="text" id="mob" maxlength="10" onkeydown="return isNumberKey(event)" onkeyup="AvoidZero(this.id);"></td>
                             </tr>
                             <tr>
                                 <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Emailid : -</h3></td>
                                 <td align="left" style="width: 45%; vertical-align: baseline;">
-                                    <input type="text" id="email" value="<%=data[0].emailid%>"></td>                                    
+                                    <input type="text" id="email"></td>                                    
                             </tr>
                             <tr>
                                 <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Address : -</h3></td>
                                 <td align="left" style="width: 45%; vertical-align: baseline;">
-                                    <input type="text" id="address" value="<%=data[0].address%>"></td>                                     
+                                    <input type="text" id="address"></td>                                     
                             </tr> 
                             <tr>
                                 <td colspan="2"></td>
                             </tr> 
                             <tr>
                                 <td colspan="2" align="center">
-                                    <input type="submit" onclick="Update();" value="Update Details">
+                                    <input type="submit" onclick="Create();" value="Update Details">
                                     <img width="50px" height="50px" id="loader" style="display:none;">
                                 </td>
                             </tr>                          

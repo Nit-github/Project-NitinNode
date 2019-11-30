@@ -1,12 +1,12 @@
 require('dotenv').config()
 const express=require("express");
-const ejs=require("ejs");
 const session = require('express-session');
+const signup=require("./usercreate.js");
 const login=require("./login.js");
 const uprofile=require("./userdetails.js");
+const ueditprofile=require("./userdetailsedit.js");
 const logout=require("./logout.js");
 const bodyparser=require("body-parser");
-const path=require("path");
 
 var app=express();
 app.set("view engine","ejs");
@@ -20,9 +20,11 @@ app.use(session({
   saveUninitialized: true,
   cookie: {expires: 3600000}
 }))
-    app.use('/login',login);
+app.use('/signup',signup);
+app.use('/login',login);
 app.use('/user',uprofile);
 app.use('/logout',logout);
+app.use('/edit',ueditprofile);
 
 var sessionChecker = (req, res, next) => {  
   if (req.session.uuid) {    

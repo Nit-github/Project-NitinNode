@@ -9,7 +9,7 @@ try{
         var query=`select * from usermst where Isactive=1 and uuid=$1`;
         const params = [];
         params.push(`${req.session.uuid}`);
-        let result = await postgreysql.executequery(query,params);        
+        let result = await postgreysql.FetchQuery(query,params);        
         if(result.rowCount==1)
         {
             res.render('userdetails.ejs', {data:result.rows});

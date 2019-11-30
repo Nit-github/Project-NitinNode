@@ -9,7 +9,7 @@ const pool = new Pool({
     ssl:true
   })
   
-function executequery(query,params){
+function FetchQuery(query,params){
   //console.log(query,params);
     return new Promise(async function(resolve,reject)
     {    
@@ -26,5 +26,19 @@ function executequery(query,params){
               }
     })
 }
-module.exports={executequery}
+function InsertQuert(query,params){
+  return new Promise(async function(resolve,reject)
+  {
+    const client = await pool.connect()
+    client.query(query,params,function(err,result){
+      if (err) {        
+        reject(err);
+    } else {      
+        resolve("OK");
+    }        
+    })
+  })
+}
+
+module.exports={FetchQuery,InsertQuert}
 console.log("hello india");

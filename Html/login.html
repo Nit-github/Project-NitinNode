@@ -11,8 +11,7 @@
             {
             $("#loader").show();
                 $.ajax({
-                    url: `${ajxurl}/login/user/`,
-                    //url:'https://nit-node.herokuapp.com/login',
+                url: `${ajxurl}/login/userlogin/`,                 
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
@@ -23,6 +22,10 @@
                         window.location.href=data;
                     else
                         $("#spn").html(data);
+                },
+                error:function(err){
+                    console.log(err);
+                    alert(err);
                 }
                 });
             }
@@ -40,37 +43,48 @@
     }
     </script>
     <body>
-        <table align="center" style="width: 100%;">
-            <tr>
-                <td>
-                    User Name
-                </td>
-                <td>
-                    <input type="text" id="UID">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    User Pwd
-                </td>
-                <td>
-                    <input type="password" id="PWD">
-                </td>
-            </tr>
-            <tr>                
-                <td colspan="2" align="center">
-                    <input type="submit" value="Submit" onclick="ValidateLogin()">
-                    <img src="https://thumbs.gfycat.com/MarriedMarvelousHawaiianmonkseal-small.gif" width="50px" height="50px" id="loader" style="display:none;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Result : 
-                </td>
-                <td>
-                    <span id="spn"></span>
-                </td>
-            </tr>
-        </table>
+            <table align="center" style="width: 100%">
+                    <tr>
+                        <td colspan="2" align="left">
+                          <a href="/">Home</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>                    
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                          <h1>Already User Login</h1>
+                        </td>
+                    </tr>            
+                    <tr>
+                        <td colspan="2"></td>                    
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <table align="center" style="width: 90%;">                                   
+                                <tr>
+                                    <td align="right" style="width: 45%; vertical-align: baseline;"><h3>User Name : </h3></td>
+                                    <td align="left" style="width: 45%; vertical-align: baseline;">
+                                        <input type="text" id="UID"></td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="width: 45%; vertical-align: baseline;"><h3>User Pwd : </h3></td>
+                                    <td align="left" style="width: 45%; vertical-align: baseline;">
+                                        <input type="password" id="PWD"></td>
+                                </tr>                                
+                                <tr>
+                                    <td colspan="2"></td>
+                                </tr> 
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" value="Submit" onclick="ValidateLogin()">
+                                        <img  width="50px" height="50px" id="loader" style="display:none;">
+                                    </td>
+                                </tr>                          
+                            </table> 
+                        </td>
+                    </tr>
+                </table>           
     </body>
 </head>
