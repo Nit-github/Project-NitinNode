@@ -35,8 +35,8 @@ function InsertQuert(query,params){
         console.log(err);      
         reject(err);
     } else {    
-      console.log("OK");    
-        //resolve("OK");
+      console.log("OK","row inserted");    
+        resolve("OK");
     }        
     })
   })
