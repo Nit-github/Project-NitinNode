@@ -15,7 +15,7 @@ router.post('/create',async function(req,res){
             params.push(`${req.body.Email}`);
             params.push(`${req.body.Address}`);
             let result = await postgreysql.InsertQuert(query,params);  
-            console.log(result);
+            //console.log(result);
             res.send(result);                              
     }catch(err)
     {

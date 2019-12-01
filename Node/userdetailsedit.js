@@ -39,7 +39,7 @@ try{
         params.push(`${req.body.Email}`);
         params.push(`${req.body.Address}`);
         let result = await postgreysql.InsertQuert(query,params);  
-        console.log(result);             
+        //console.log(result);             
         if(result=="OK")
         {     
              res.send("/user");            

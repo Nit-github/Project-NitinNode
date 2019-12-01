@@ -3,8 +3,7 @@
     <script type="text/javascript" src="./globalvar.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
     <script type="text/javascript">
-    function ValidateLogin(){    
-        debugger;   
+    function ValidateLogin(){              
         if($("#UID").val().trim().length>0)
         {
             if($("#PWD").val().trim().length>0)
@@ -15,8 +14,7 @@
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
-                success: function (data) { 
-                    debugger;
+                success: function (data) {                     
                     $("#loader").hide();  
                     if(data!="No User Found!")                  
                         window.location.href=data;

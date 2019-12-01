@@ -31,10 +31,12 @@ function InsertQuert(query,params){
   {
     const client = await pool.connect()
     client.query(query,params,function(err,result){
-      if (err) {        
+      if (err) {  
+        console.log(err);      
         reject(err);
-    } else {      
-        resolve("OK");
+    } else {    
+      console.log("OK");    
+        //resolve("OK");
     }        
     })
   })

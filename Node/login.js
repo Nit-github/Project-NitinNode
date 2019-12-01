@@ -20,7 +20,7 @@ router.post('/userlogin',async function(req,res){
           let UserName=result.rows[0].uname;
           //let UUID=result.rows[0].uuid.replace(/-/g, "");          
           req.session.uuid = result.rows[0].uuid;
-          console.log(req.session);
+          //console.log(req.session);
           finalresult="/user";
         }                
       return res.send(finalresult); 
