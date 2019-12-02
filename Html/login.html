@@ -15,8 +15,7 @@
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
-                success: function (data) {   
-                    debugger;                  
+                success: function (data) {                                    
                     $("#loader").hide();  
                     if(data!="No User Found!")                  
                         window.location.href=data;
