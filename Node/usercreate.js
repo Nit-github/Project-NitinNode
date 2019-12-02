@@ -8,12 +8,13 @@ router.get('/',function(req,res){
 
 router.post('/create',async function(req,res){ 
     try{        
-            var query=`Insert into usermst(uname,mobileno,emailid,address) values($1,$2,$3,$4) `;
+            var query=`Insert into usermst(uname,mobileno,emailid,address,upwd) values($1,$2,$3,$4,$5) `;
             const params = [];            
             params.push(`${req.body.UName}`);
             params.push(`${req.body.Mob}`);
             params.push(`${req.body.Email}`);
             params.push(`${req.body.Address}`);
+            params.push(`${req.body.Pwd}`);
             let result = await postgreysql.InsertQuert(query,params);  
             //console.log(result);
             res.send(result);                              

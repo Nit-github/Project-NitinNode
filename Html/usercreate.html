@@ -20,12 +20,14 @@
                         {
                         if($("#address").val().trim().length>0)
                         {
+                            if($("#password").val().trim().length>0)
+                            {
                             $("#loader").show();
                             $.ajax({
                                 url: `${ajxurl}/signup/create/`,                        
                                 type: 'POST',
                                 contentType: 'application/json',
-                                data: JSON.stringify({ UName: $("#uname").val(),Mob:$("#mob").val(),Email:$("#email").val(),Address:$("#address").val()}),
+                                data: JSON.stringify({ UName: $("#uname").val(),Mob:$("#mob").val(),Email:$("#email").val(),Address:$("#address").val(),Pwd:$("#password").val()}),
                                 success: function (data) {                                     
                                     $("#loader").hide();                                                       
                                     if(data=="OK")
@@ -41,7 +43,10 @@
                                 console.log(err);
                                 alert(err);
                                 }
-                            });                             
+                            });  
+                            }else{
+                                alert("Enter Password!");
+                                return false;}
                         }else{
                             alert("Enter Address!");
                             return false;}
@@ -99,6 +104,11 @@
                                 <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Address : -</h3></td>
                                 <td align="left" style="width: 45%; vertical-align: baseline;">
                                     <input type="text" id="address"></td>                                     
+                            </tr> 
+                            <tr>
+                                <td align="right" style="width: 45%; vertical-align: baseline;"><h3>Password : -</h3></td>
+                                <td align="left" style="width: 45%; vertical-align: baseline;">
+                                    <input type="text" id="password"></td>                                     
                             </tr> 
                             <tr>
                                 <td colspan="2"></td>
