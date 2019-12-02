@@ -43,4 +43,4 @@ function InsertQuert(query,params){
 }
 
 module.exports={FetchQuery,InsertQuert}
-console.log("hello india");
+//console.log("hello india");

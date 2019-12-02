@@ -17,7 +17,7 @@
                 data: JSON.stringify({ UID: $("#UID").val(),PWD:$("#PWD").val()}),
                 success: function (data) {                                    
                     $("#loader").hide();  
-                    if(data!="No User Found!")                  
+                    if(data!="No User Found!" && data!="Incorrect Password!")                  
                         window.location.href=data;
                     else
                         $("#spn").html(data);
@@ -65,12 +65,12 @@
                                 <tr>
                                     <td align="right" style="width: 45%; vertical-align: baseline;"><h3>User Name : </h3></td>
                                     <td align="left" style="width: 45%; vertical-align: baseline;">
-                                        <input type="text" id="UID"></td>
+                                        <input type="text" id="UID" autocomplete="off"></td>
                                 </tr>
                                 <tr>
                                     <td align="right" style="width: 45%; vertical-align: baseline;"><h3>User Pwd : </h3></td>
                                     <td align="left" style="width: 45%; vertical-align: baseline;">
-                                        <input type="password" id="PWD"></td>
+                                        <input type="password" id="PWD" autocomplete="off"></td>
                                 </tr>                                
                                 <tr>
                                     <td colspan="2"></td>
