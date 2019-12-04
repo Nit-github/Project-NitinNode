@@ -21,8 +21,8 @@ router.post('/create',async function(req,res){
             res.send(result);                              
     }catch(err)
     {
-        console.log(err);
-        res.status(401).send(err);
+        console.log(err.detail);
+        res.status(401).send("Something went wrong! Please try after some time.");
     }
 });
 
