@@ -2,10 +2,11 @@ const express=require("express");
 const postgreysql=require("./Postgreysql.js");
 const hashedpassword=require("./hashedpassword.js");
 const router=express.Router();
+const path=require("path");
 
-router.get('/',function(req,res){
-    res.sendfile("Html/usercreate.html");
-    })
+router.get('/',function(req,res){    
+    res.sendFile(path.resolve(__dirname+"/../","Html","usercreate.html"))
+})
 
 router.post('/create',async function(req,res){ 
     try{        

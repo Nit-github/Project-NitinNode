@@ -1,6 +1,7 @@
 const express=require("express");
 const postgreysql=require("./Postgreysql.js");
 const router=express.Router();
+const path=require("path");
 
 router.get('/',async function(req,res){
 try{
@@ -14,12 +15,12 @@ try{
         {
             res.render('userdetails.ejs', {data:result.rows});
         }
-        else{
-            res.sendfile("Html/logout.html");
+        else{            
+            res.sendFile(path.resolve(__dirname+"/../","Html","logout.html"))
         }                     
     }else
     {
-        res.sendfile("Html/logout.html");
+        res.sendFile(path.resolve(__dirname+"/../","Html","logout.html"))
     }
 }catch(err)
 {

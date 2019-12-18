@@ -7,12 +7,15 @@ const uprofile=require("./userdetails.js");
 const ueditprofile=require("./userdetailsedit.js");
 const logout=require("./logout.js");
 const bodyparser=require("body-parser");
+const path=require("path");
 
 var app=express();
 app.set("view engine","ejs");
 app.set("views","./Html");
 app.use(bodyparser.json());
-app.use(express.static("GlobalData",))
+app.use(express.static("GlobalData"))
+
+
 app.use(session({
   key: 'uuid',
   secret: process.env.sessecret,
@@ -20,6 +23,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {expires: 3600000}
 }))
+
 app.use('/signup',signup);
 app.use('/login',login);
 app.use('/user',uprofile);
@@ -35,8 +39,8 @@ var sessionChecker = (req, res, next) => {
 };
 
 
-app.get('/',sessionChecker,function(req,res){  
-  res.sendfile("Html/index.html");
+app.get('/',sessionChecker,function(req,res){    
+  res.sendFile(path.resolve(__dirname+"/../","Html","index.html"))
 })
 
 
